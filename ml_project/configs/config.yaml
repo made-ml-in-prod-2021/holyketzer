@@ -1,3 +1,6 @@
+test_split: 0.2
+random_state: 777
+
 data:
   bucket: ml-stuff
   path: data/heart.csv
