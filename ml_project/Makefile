@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements
+.PHONY: clean data lint requirements train
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -28,6 +28,9 @@ requirements: test_environment
 data:
 	$(PYTHON_INTERPRETER) src/data/download.py data/raw/heart.csv
 	$(PYTHON_INTERPRETER) src/features/build_features.py data/raw data/processed
+
+train:
+	$(PYTHON_INTERPRETER) src/models/train_model.py data/processed/heart_train.csv data/processed/heart_test.csv $(model)
 
 ## Delete all compiled Python files
 clean:

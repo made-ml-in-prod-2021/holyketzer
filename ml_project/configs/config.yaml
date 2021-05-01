@@ -5,3 +5,29 @@ data:
   bucket: ml-stuff
   path: data/heart.csv
   endpoint_url: https://storage.yandexcloud.net/
+
+target: target
+features:
+  - age
+  - sex
+  - cp
+  - trestbps
+  - chol
+  - fbs
+  - restecg
+  - thalach
+  - exang
+  - oldpeak
+  - slope
+  - ca
+  - thal
+
+models:
+  log_reg:
+    class: LogisticRegression
+    params:
+      max_iter: 1000
+  random_forest:
+    class: RandomForestClassifier
+    params:
+      max_depth: 3
