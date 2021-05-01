@@ -1,0 +1,4 @@
+data:
+  bucket: ml-stuff
+  path: data/heart.csv
+  endpoint_url: https://storage.yandexcloud.net/
