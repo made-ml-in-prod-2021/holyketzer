@@ -1,21 +1,16 @@
 # -*- coding: utf-8 -*-
 import click
 import joblib
-import logging
 import os
 import pandas as pd
 
-from os import listdir
-from os.path import isfile, join
-from pathlib import Path
-
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 from src.config import config
 from src.logging import logger
+
 
 @click.command()
 @click.argument('train_path', type=click.Path(exists=True))
@@ -40,6 +35,7 @@ def main(train_path, test_path, model_config):
     else:
         raise ValueError(f"unknown model_config {model_config}")
 
+
 def build_model(model_config, random_state):
     params = {'random_state': random_state}
     params.update(model_config['params'])
@@ -50,6 +46,7 @@ def build_model(model_config, random_state):
         return RandomForestClassifier(**params)
     else:
         raise ValueError(f"unknown model class {model_config['class']}")
+
 
 def split_x_y(df, config):
     return df[config['features']], df[config['target']]

@@ -7,11 +7,11 @@ import click
 from src.config import config
 from src.logging import logger
 
+
 @click.command()
 @click.argument('output_filepath', type=click.Path())
 def main(output_filepath):
-    data_config =  config['data']
-    session = boto3.session.Session()
+    data_config = config['data']
 
     s3 = boto3.resource(
         's3',

@@ -10,14 +10,27 @@ make create_environment
 # Setup requirements
 make requirements
 
-# Download data
-make download
+# Download data and build train + test datasets
+make data
 ```
 
-# Preprocess data
+# Train model
 
 ```sh
+make train model=<model_config>
+```
 
+where `model_config` is a section in `config.yaml` model section
+
+# Predict
+
+```sh
+make predict model=<model> test_file=<test_file>
+```
+
+# Run linter
+```sh
+make lint
 ```
 
 Project Organization
