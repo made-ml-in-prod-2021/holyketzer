@@ -17,7 +17,6 @@ from src.logging import logger
 @click.argument('test_path', type=click.Path(exists=True))
 @click.argument('model_config')
 def main(train_path, test_path, model_config):
-    print(train_path, test_path, model_config)
     df_train = pd.read_csv(train_path)
     df_test = pd.read_csv(test_path)
 
