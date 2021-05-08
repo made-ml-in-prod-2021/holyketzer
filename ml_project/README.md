@@ -9,8 +9,25 @@ make create_environment
 
 # Setup requirements
 make requirements
+```
 
-# Download data and build train + test datasets
+## Setup DVC
+
+Add `.dvc/config.local` with key to access Yandex Cloud
+```sh
+['remote "storage"']
+    access_key_id = <access key>
+    secret_access_key = <secret key>
+```
+
+Then pull data and models with
+```sh
+dvc pull
+```
+
+# Build train + test datasets
+
+```sh
 make data
 ```
 

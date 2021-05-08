@@ -26,7 +26,6 @@ requirements: test_environment
 
 ## Make Dataset
 data:
-	$(PYTHON_INTERPRETER) src/data/download.py data/raw/heart.csv
 	$(PYTHON_INTERPRETER) src/features/build_features.py data/raw data/processed
 
 train:
