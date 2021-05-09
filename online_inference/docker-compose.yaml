@@ -1,0 +1,8 @@
+---
+version: '3'
+services:
+  prediction_service:
+    build: .
+    image: holyketzer/made-ml-inference
+    ports:
+      - 8000:8000
