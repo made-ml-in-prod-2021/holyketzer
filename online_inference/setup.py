@@ -11,6 +11,7 @@ install_requires = [
 extras = {
     'testing': [
         "pytest==6.2.3",
+        "requests",
     ],
 }
 
