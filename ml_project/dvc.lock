@@ -1,0 +1,47 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: make data
+    params:
+      configs/config.yaml:
+        random_state: 777
+        test_split: 0.2
+    outs:
+    - path: data/processed/heart_test.csv
+      md5: 4f233cb5d6a6493bf299004eaa57d27f
+      size: 2561
+    - path: data/processed/heart_train.csv
+      md5: a378d9226cc66eea60d2f0259f223ff6
+      size: 9904
+  train:
+    cmd: make train model=random_forest
+    params:
+      configs/config.yaml:
+        features:
+        - age
+        - sex
+        - cp
+        - trestbps
+        - chol
+        - fbs
+        - restecg
+        - thalach
+        - exang
+        - oldpeak
+        - slope
+        - ca
+        - thal
+        models:
+          log_reg:
+            class: LogisticRegression
+            params:
+              max_iter: 1000
+          random_forest:
+            class: RandomForestClassifier
+            params:
+              max_depth: 3
+        target: target
+    outs:
+    - path: models/random_forest.pkl
+      md5: d0ede63ee56a447d8a6941e3785830ff
+      size: 141337

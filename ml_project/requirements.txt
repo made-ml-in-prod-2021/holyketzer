@@ -1,0 +1,14 @@
+# local package
+-e .
+
+# external requirements
+boto3==1.17.62
+click==7.1.2
+coverage
+flake8
+pandas==1.2.4
+pytest==6.2.3
+python-dotenv>=0.5.1
+PyYAML
+scikit-learn==0.24.2
+dvc

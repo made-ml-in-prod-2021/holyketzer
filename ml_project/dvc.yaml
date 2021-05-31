@@ -1,0 +1,19 @@
+stages:
+  prepare:
+    cmd: make data
+    params:
+    - configs/config.yaml:
+      - random_state
+      - test_split
+    outs:
+    - data/processed/heart_test.csv
+    - data/processed/heart_train.csv
+  train:
+    cmd: make train model=random_forest
+    params:
+    - configs/config.yaml:
+      - models
+      - target
+      - features
+    outs:
+    - models/random_forest.pkl
