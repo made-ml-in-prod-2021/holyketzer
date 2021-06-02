@@ -35,21 +35,24 @@ def random_dates(start, end, size):
     return pd.to_datetime(np.random.randint(start_u, end_u, size), unit="D")
 
 
-def generate_data(path, size=100):
+def generate_data(output_dir, size=100):
     df = pd.DataFrame(columns=['First', 'Last', 'Gender', 'Birthdate'])
     df['First'] = random_names('first_names', size)
     df['Last'] = random_names('last_names', size)
     df['Gender'] = random_genders(size)
     df['Birthdate'] = random_dates(start=pd.to_datetime('1940-01-01'), end=pd.to_datetime('2008-01-01'), size=size)
 
-    df.to_csv(path, index=False)
+    features = ['First', 'Last', 'Gender']
+    target = ['Birthdate']
 
+    df[features].to_csv(os.path.join(output_dir, "data.csv"), index=False)
+    df[target].to_csv(os.path.join(output_dir, "target.csv"), index=False)
 
 @click.command("download")
 @click.argument("output_dir")
 def download(output_dir: str):
     os.makedirs(output_dir, exist_ok=True)
-    generate_data(os.path.join(output_dir, "data.csv"))
+    generate_data(output_dir)
 
 if __name__ == '__main__':
     download()
