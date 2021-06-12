@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: online-inference
+spec:
+  containers:
+    - name: ml-serivce
+      image: holyketzer/made-ml-inference
+      ports:
+        - name: api
+          containerPort: 8000
+          protocol: TCP
